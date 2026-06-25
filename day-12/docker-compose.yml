@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    image: nginx
+    ports:
+      -  "9095:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    depends_on:
+      - database
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: devops123
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: arshaan
+      MYSQL_PASSWORD: devops123
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+
